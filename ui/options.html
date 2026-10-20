@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tab Cover settings</title>
+<link rel="icon" href="../icons/icon-32.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<header class="shell-header"><img src="../icons/icon-32.png" alt=""><div class="shell-name"><b>Tab Cover</b> <span>Settings</span></div></header>
+<main class="opt">
+  <div class="opt-head"><h1>Settings</h1></div>
+
+  <section class="opt-sec" aria-labelledby="h-rules">
+    <header><h2 id="h-rules">Rules</h2><p>Tabs that match a rule that is on get hidden.</p></header>
+    <form class="add-form" id="addForm" data-sg-layer="1" autocomplete="off">
+      <div class="field-group"><span class="sg-label">Match</span><div class="switcher" role="group" aria-label="Match" id="matchSw"></div></div>
+      <div class="sg-form-item">
+        <label class="sg-label" for="addIn">Address</label>
+        <div class="joined"><input class="sg-input" id="addIn" type="text" spellcheck="false" placeholder="instagram.com" aria-describedby="addMsg"><button class="sg-btn sg-btn--primary sg-btn--md has-icon" type="submit">Add rule<svg class="sg-icon sg-icon--16 sg-btn__icon" aria-hidden="true" viewBox="0 0 32 32"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"/></svg></button></div>
+        <p class="sg-helper" id="addMsg"></p>
+      </div>
+    </form>
+    <div id="rules"></div>
+  </section>
+
+  <section class="opt-sec" aria-labelledby="h-unlock">
+    <header><h2 id="h-unlock">Unlock</h2><p>How you unlock a hidden tab.</p></header>
+    <div class="stack">
+      <div class="field-group"><span class="sg-label">Method</span><div class="switcher" role="group" aria-label="Unlock method" id="methodSw"></div></div>
+      <div id="methodExtra" class="stack"></div>
+      <div class="field-group"><span class="sg-label">Keep it visible for</span><div class="switcher" role="group" aria-label="Keep it visible for" id="againSw"></div></div>
+    </div>
+  </section>
+
+  <section class="opt-sec" aria-labelledby="h-cover">
+    <header><h2 id="h-cover">Cover</h2></header>
+    <div class="stack" id="coverOpts"></div>
+  </section>
+</main>
+<script src="../shared.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

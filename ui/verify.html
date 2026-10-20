@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unlock with Touch ID</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<main class="verify" data-sg-theme="g100">
+  <h1>Hidden.</h1>
+  <div class="fp-box" id="fp"></div>
+  <p class="verify__hint" id="hint">Place your finger on Touch ID</p>
+  <p class="verify__err" id="err" hidden></p>
+  <div class="verify__actions">
+    <button class="sg-btn sg-btn--primary sg-btn--md" type="button" id="retry" hidden>Try again</button>
+    <button class="sg-btn sg-btn--ghost sg-btn--md" type="button" id="cancel">Cancel</button>
+  </div>
+</main>
+<script src="../shared.js"></script>
+<script src="verify.js"></script>
+</body>
+</html>

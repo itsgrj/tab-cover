@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Cover",
+  "short_name": "Tab Cover",
+  "version": "0.1.0",
+  "description": "Hides any tab whose address is on your list behind a cover. Unlock with Touch ID or a PIN.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2OF0JyLirquJMMRahcOA+XXg9Y44m47Qk7XjV0PsPIurniWeylDHTx2UwyLgaM5XKA5YigBwxXpenU/TzXkBL86Kv+hsmsEGZgCDCj0CVcdl0Ac/QGSLOLptFNFEMzk34JKLZdpiMzU00ubklY2jYQOVa9Umf0R5EaxGMZnZLL0SWHSvnXQkrUPOgdRgkgklSW6voqlcdZxnxYjcpaVislGgJbaw5YI3fjdqHdDZJhqRlbTsjA9xbT4tJWG9/oPAJbkuIB4FBphz6K0gfVRmTDAxRf4Vx4+u8Zp0lrngalq9FNZD76jnqpI/3XGIhNE2trYV+VFQHm6BNjxOkqOvkQIDAQAB",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "shared.js",
+        "cover-tokens.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "Tab Cover",
+    "default_popup": "ui/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "options_page": "ui/options.html",
+  "commands": {
+    "unlock-shortcut": {
+      "suggested_key": {
+        "default": "Alt+Shift+H",
+        "mac": "Alt+Shift+H"
+      },
+      "description": "Unlock the hidden tab (when the unlock method is Keyboard shortcut)"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/GeistPixel-Square.woff2",
+        "icons/hidden-32.png"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}

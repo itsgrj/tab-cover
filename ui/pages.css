@@ -1,0 +1,100 @@
+/* Tab Cover: settings page, toolbar popup and Touch ID window. Every value reads from tokens.css. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--sg-background); color: var(--sg-text-primary); font-family: var(--sg-font-family-sans); color-scheme: var(--sg-color-scheme);
+  font-size: var(--sg-body-01-font-size); line-height: var(--sg-body-01-line-height); letter-spacing: var(--sg-body-01-letter-spacing); text-align: start; }
+button, input { font-family: inherit; }
+:focus-visible { outline: var(--sg-focus-width) solid var(--sg-focus); outline-offset: var(--sg-focus-offset-inset); }
+.sg-icon { fill: currentColor; flex-shrink: 0; display: block; }
+.sg-icon--16 { inline-size: var(--sg-icon-size-01); block-size: var(--sg-icon-size-01); }
+.sg-icon--20 { inline-size: var(--sg-icon-size-02); block-size: var(--sg-icon-size-02); }
+.vh { position: absolute; inline-size: var(--sg-border-width-01); block-size: var(--sg-border-width-01); overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+[hidden] { display: none !important; }
+.mono { font-family: var(--sg-font-family-mono); font-variant-numeric: var(--sg-font-variant-numeric-tabular); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; transition-delay: 0s !important; animation-duration: 0s !important; } }
+
+/* ---------- Shell ---------- */
+.shell-header { position: sticky; top: 0; z-index: var(--sg-z-index-dropdown); display: flex; align-items: center; gap: var(--sg-spacing-04);
+  min-block-size: var(--sg-size-lg); padding-inline: var(--sg-spacing-05); background: var(--sg-background); border-block-end: var(--sg-border-width-01) solid var(--sg-border-subtle-00); }
+.shell-header img { inline-size: var(--sg-icon-size-02); block-size: var(--sg-icon-size-02); }
+.shell-name { font-size: var(--sg-body-compact-01-font-size); line-height: var(--sg-body-compact-01-line-height); letter-spacing: var(--sg-body-compact-01-letter-spacing); }
+.shell-name b { font-weight: var(--sg-font-weight-semibold); }
+.shell-name span { color: var(--sg-text-secondary); }
+
+/* ---------- Settings page ---------- */
+.opt { display: grid; gap: var(--sg-spacing-09); max-inline-size: var(--sg-tc-options-width); padding: var(--sg-spacing-09) var(--sg-spacing-07) var(--sg-spacing-12); }
+@media (max-width: 42rem) { .opt { padding-inline: var(--sg-spacing-05); } }
+.opt-head { display: grid; gap: var(--sg-spacing-03); }
+.opt-head h1 { margin: 0; font-size: var(--sg-heading-05-font-size); font-weight: var(--sg-heading-05-font-weight); line-height: var(--sg-heading-05-line-height); letter-spacing: var(--sg-heading-05-letter-spacing); }
+.opt-head p, .opt-sec header p { margin: 0; color: var(--sg-text-secondary); max-inline-size: var(--sg-reference-measure); }
+.opt-sec { display: grid; gap: var(--sg-spacing-06); padding-block-start: var(--sg-spacing-05); border-block-start: var(--sg-border-width-01) solid var(--sg-border-strong-01); }
+.opt-sec > header { display: grid; gap: var(--sg-spacing-02); }
+.opt-sec h2 { margin: 0; font-size: var(--sg-heading-03-font-size); font-weight: var(--sg-heading-03-font-weight); line-height: var(--sg-heading-03-line-height); letter-spacing: var(--sg-heading-03-letter-spacing); }
+.stack { display: grid; gap: var(--sg-spacing-06); }
+.field-group { display: grid; gap: var(--sg-spacing-03); justify-items: start; }
+.field-group > .sg-label { margin: 0; }
+.sg-form-item { max-inline-size: none; }
+
+/* Add rule: Option A, button joined to the address field */
+.add-form { display: grid; gap: var(--sg-spacing-05); padding: var(--sg-spacing-05); background: var(--sg-layer-01); }
+.joined { display: flex; align-items: stretch; inline-size: 100%; }
+.joined .sg-input { flex: 1 1 auto; min-width: 0; background: var(--sg-field-02); }
+.joined .sg-btn { block-size: var(--sg-size-md); min-block-size: var(--sg-size-md); max-inline-size: none; flex-shrink: 0; white-space: nowrap; }
+.joined--narrow { max-inline-size: var(--sg-tc-pin-width); }
+.joined--narrow .sg-input { background: var(--sg-field-01); }
+
+/* Rules table */
+.sg-table-container { overflow-x: auto; }
+.pattern { color: var(--sg-text-primary) !important; font-family: var(--sg-font-family-mono); font-size: var(--sg-code-02-font-size); line-height: var(--sg-code-02-line-height); overflow-wrap: anywhere; }
+tr.is-off .pattern { color: var(--sg-text-disabled) !important; }
+.td-actions { inline-size: var(--sg-size-lg); padding: 0 !important; }
+.row-btn { display: flex; align-items: center; justify-content: center; inline-size: var(--sg-size-lg); block-size: var(--sg-size-lg); margin: 0; padding: 0; border: 0; background: transparent; color: var(--sg-icon-primary); cursor: pointer; }
+.row-btn:hover { background: var(--sg-button-danger-hover); color: var(--sg-icon-on-color); }
+.empty { padding: var(--sg-spacing-05); background: var(--sg-layer-01); color: var(--sg-text-secondary); }
+.sg-table td .sg-toggle { display: flex; }
+tr.is-new td { animation: rowflash var(--sg-duration-slow-02) var(--sg-easing-standard-productive); }
+@keyframes rowflash { from { background: var(--sg-layer-selected-hover); } }
+
+/* Touch ID registration */
+.reg { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sg-spacing-05); padding: var(--sg-spacing-05); background: var(--sg-layer-01); inline-size: 100%; }
+.reg__fp { inline-size: var(--sg-size-xl); color: var(--sg-icon-secondary); }
+.reg__txt { display: grid; gap: var(--sg-spacing-01); flex: 1 1 var(--sg-reference-type-meta); }
+.reg__txt b { font-size: var(--sg-heading-compact-01-font-size); font-weight: var(--sg-heading-compact-01-font-weight); line-height: var(--sg-heading-compact-01-line-height); letter-spacing: var(--sg-heading-compact-01-letter-spacing); }
+.reg__txt span { color: var(--sg-text-secondary); font-size: var(--sg-helper-text-01-font-size); line-height: var(--sg-helper-text-01-line-height); letter-spacing: var(--sg-helper-text-01-letter-spacing); }
+.keys { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sg-spacing-03); color: var(--sg-text-secondary); }
+.keys kbd { display: inline-flex; align-items: center; block-size: var(--sg-size-sm); padding-inline: var(--sg-spacing-04); background: var(--sg-layer-01); color: var(--sg-text-primary);
+  border: var(--sg-border-width-01) solid var(--sg-border-strong-01); border-block-end-width: var(--sg-border-width-03); font-family: var(--sg-font-family-mono); font-size: var(--sg-code-02-font-size); }
+.ok-note { margin: 0; color: var(--sg-support-success); font-size: var(--sg-helper-text-01-font-size); line-height: var(--sg-helper-text-01-line-height); }
+
+/* Fingerprint (shared by settings and the Touch ID window) */
+.fp-svg { display: block; inline-size: 100%; block-size: auto; overflow: visible; }
+.fp-svg rect { fill: transparent; stroke: currentColor; stroke-width: 0.14;
+  transition: fill var(--sg-duration-fast-02) var(--sg-easing-standard-productive), stroke var(--sg-duration-fast-02) var(--sg-easing-standard-productive); }
+.is-scanning .fp-svg rect { fill: var(--sg-interactive); stroke: var(--sg-interactive); transition-delay: calc(var(--sg-tc-scan-step) * var(--r)); }
+.is-ok .fp-svg rect { fill: var(--sg-support-success); stroke: var(--sg-support-success); transition-delay: 0s; }
+
+/* ---------- Toolbar popup ---------- */
+.pop { inline-size: var(--sg-tc-popup-width); background: var(--sg-layer-01); }
+.pop__head { display: flex; align-items: center; gap: var(--sg-spacing-03); min-block-size: var(--sg-size-lg); padding-inline: var(--sg-spacing-05); border-block-end: var(--sg-border-width-01) solid var(--sg-border-subtle-01); }
+.pop__head img { inline-size: var(--sg-icon-size-02); block-size: var(--sg-icon-size-02); }
+.pop__head b { font-size: var(--sg-heading-compact-01-font-size); font-weight: var(--sg-heading-compact-01-font-weight); line-height: var(--sg-heading-compact-01-line-height); letter-spacing: var(--sg-heading-compact-01-letter-spacing); }
+.pop__body { display: grid; gap: var(--sg-spacing-05); padding: var(--sg-spacing-05); }
+.pop__status { display: grid; gap: var(--sg-spacing-02); }
+.pop__status span { color: var(--sg-text-secondary); font-size: var(--sg-label-01-font-size); line-height: var(--sg-label-01-line-height); letter-spacing: var(--sg-label-01-letter-spacing); }
+.pop__status p { margin: 0; overflow-wrap: anywhere; font-size: var(--sg-body-compact-01-font-size); line-height: var(--sg-body-compact-01-line-height); letter-spacing: var(--sg-body-compact-01-letter-spacing); }
+.pop__actions { display: grid; gap: var(--sg-spacing-02); justify-items: start; }
+.pop__foot { border-block-start: var(--sg-border-width-01) solid var(--sg-border-subtle-01); }
+.pop__foot .sg-btn { inline-size: 100%; max-inline-size: none; }
+.pop .sg-toggle__label-text { margin-block-end: var(--sg-spacing-03); }
+
+/* ---------- Touch ID window ---------- */
+.verify { min-block-size: 100vh; display: grid; align-content: start; gap: var(--sg-spacing-06); padding: var(--sg-spacing-08) var(--sg-spacing-07);
+  background: var(--sg-background); color: var(--sg-text-primary);
+  font-family: var(--sg-font-family-pixel-square); font-weight: var(--sg-font-weight-regular); font-synthesis: none; letter-spacing: 0; }
+.verify button { font-family: inherit; font-weight: inherit; letter-spacing: 0; }
+.verify h1 { margin: 0; font-weight: var(--sg-font-weight-regular); font-size: var(--sg-heading-05-font-size); line-height: var(--sg-heading-05-line-height); }
+.verify .fp-box { inline-size: var(--sg-tc-fingerprint-size-verify); color: var(--sg-icon-secondary); }
+.verify__hint { margin: 0; color: var(--sg-text-secondary); font-size: var(--sg-heading-02-font-size); line-height: var(--sg-heading-02-line-height); }
+.verify__err { margin: 0; color: var(--sg-text-error); font-size: var(--sg-body-01-font-size); line-height: var(--sg-body-01-line-height); }
+.verify__actions { display: flex; flex-wrap: wrap; gap: var(--sg-spacing-03); }
+.verify .sg-btn { font-size: var(--sg-body-02-font-size); }
