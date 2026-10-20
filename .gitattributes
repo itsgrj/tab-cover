@@ -1,0 +1,4 @@
+# Keep the language bar honest: the Carbon token and component sheets are vendored, cover-tokens.js is generated.
+ui/tokens.css linguist-vendored
+ui/components.css linguist-vendored
+cover-tokens.js linguist-generated
